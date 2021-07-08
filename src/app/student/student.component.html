@@ -26,12 +26,12 @@
     <mat-cell *matCellDef="let row">{{row.brojIndeksa}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="status">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef >Status</mat-header-cell>
     <mat-cell *matCellDef="let row">{{row.status.naziv}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="departman">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Departman</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef >Departman</mat-header-cell>
     <mat-cell *matCellDef="let row">{{row.departman.naziv}}</mat-cell>
   </ng-container>
 

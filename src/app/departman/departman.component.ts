@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { DepartmanDialogComponent } from '../dialog/departman-dialog/departman-dialog.component';
 import { Departman } from '../model/departman.model';
@@ -15,7 +18,13 @@ export class DepartmanComponent implements OnInit {
 
   displayedColumns = ['id','fakultet', 'naziv', 'oznaka', 'actions'];
 
-  dataSource: Observable<Departman[]>;
+  dataSource: MatTableDataSource<Departman>;
+    @ViewChild(MatPaginator)
+    paginator: MatPaginator;
+    @ViewChild(MatSort)
+    sort: MatSort;
+
+  //dataSource: Observable<Departman[]>;
   constructor(public departmanService: DepartmanService,
               public dialog: MatDialog) {
 
@@ -25,8 +34,20 @@ export class DepartmanComponent implements OnInit {
     this.loadData();
   }
   public loadData(){
-    this.dataSource = this.departmanService.getAllDepartman();
-  }
+    //this.dataSource = this.statusService.getAllStatus();
+    this.departmanService.getAllDepartman().subscribe(data =>{
+     this.dataSource = new MatTableDataSource(data);
+     this.dataSource.sortingDataAccessor = (data, property) => {
+       switch(property) {
+         case 'id': return data[property];
+         default: return data[property].toLocaleLowerCase();
+       }
+     };
+
+     this.dataSource.paginator = this.paginator;
+     this.dataSource.sort = this.sort;
+    });
+   }
 
   public openDialog(flag: number, id: number, fakultet: Fakultet, naziv: string, oznaka: string){
     const dialog = this.dialog.open(DepartmanDialogComponent, {data:
@@ -37,5 +58,10 @@ export class DepartmanComponent implements OnInit {
         this.loadData();
       }
     })
+  }
+  applyFilter(filterValue: string){
+    filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
   }
 }
