@@ -8,7 +8,7 @@ export class StudentService {
 
   private readonly API_URL = 'http://localhost:8082/student/';
 
-  private readonly API_URL_P = 'http://localhost:8082/student/';
+  private readonly API_URL_P = 'http://localhost:8082/studentStatus/';
 
   dataChange: BehaviorSubject<Student[]> = new BehaviorSubject<Student[]>([]);
 
