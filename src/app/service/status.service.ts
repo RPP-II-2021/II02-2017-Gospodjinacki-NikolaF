@@ -6,8 +6,8 @@ import { Status } from "../model/status.model";
 @Injectable()
 export class StatusService {
 
-  private readonly API_URL = 'http://localhost:8082/status/';
-
+  //private readonly API_URL = 'http://localhost:8082/status/';
+  private readonly API_URL = 'https://rpp-projekat-nikola-gosp.herokuapp.com/status/';
   dataChange: BehaviorSubject<Status[]> = new BehaviorSubject<Status[]>([]);
 
 

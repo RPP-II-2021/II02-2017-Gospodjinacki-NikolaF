@@ -6,7 +6,7 @@ import { Fakultet } from "../model/fakultet.model";
 
 @Injectable()
 export class FakultetService {
-  private readonly API_URL = 'http://localhost:8082/fakultet/';
+  private readonly API_URL = 'https://rpp-projekat-nikola-gosp.herokuapp.com/fakultet/';
 
   dataChange: BehaviorSubject<Fakultet[]> = new BehaviorSubject<Fakultet[]>([]);
 

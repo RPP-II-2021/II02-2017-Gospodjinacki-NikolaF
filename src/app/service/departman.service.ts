@@ -6,8 +6,8 @@ import { Departman } from "../model/departman.model";
 
 @Injectable()
 export class DepartmanService {
-  private readonly API_URL = 'http://localhost:8082/departman/';
-
+  //private readonly API_URL = 'http://localhost:8082/departman/';
+  private readonly API_URL = 'https://rpp-projekat-nikola-gosp.herokuapp.com/departman/';
   dataChange: BehaviorSubject<Departman[]> = new BehaviorSubject<Departman[]>([]);
 
   constructor(private httpClient: HttpClient){
