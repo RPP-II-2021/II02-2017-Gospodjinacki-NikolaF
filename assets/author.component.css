@@ -1,0 +1,22 @@
+body{
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  font-size:larger;
+}
+.profilna{
+  float:left;
+  max-width: 450px;
+
+  height: auto;
+}
+.lista{
+  padding-left: 35%;
+  flex: 1;
+}
+.two {
+  flex: 1;
+}
+
+.three {
+  flex: 1;
+}
+
